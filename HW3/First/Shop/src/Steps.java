@@ -1,0 +1,4 @@
+public enum Steps {
+    FIRST, SECOND, THIRD, FOURTH, FIFTH,
+    SIXTH, SEVENTH, EIGHTH, NINTH, TENTH
+}

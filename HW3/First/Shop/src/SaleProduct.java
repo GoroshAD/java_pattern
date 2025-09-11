@@ -1,5 +1,6 @@
 public class SaleProduct extends Product {
     protected int percent;
+    private int MAX_PERCENT = 100;   // константа вместо магического числа
 
     public SaleProduct(String name, int cost, String manufacturer, int percent) {
         super(name, cost, manufacturer);
@@ -12,7 +13,7 @@ public class SaleProduct extends Product {
 
     @Override
     public int getCost() {
-        return super.getCost() * (100 - percent) / 100;
+        return super.getCost() * (MAX_PERCENT - percent) / MAX_PERCENT;
     }
 
     @Override

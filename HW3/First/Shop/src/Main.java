@@ -1,4 +1,3 @@
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -83,35 +82,43 @@ public class Main {
                     continue;
                 }
 
-                switch (answer) {
-                    case 1:
+                Steps stepsAnswer;
+                try {
+                    stepsAnswer = Steps.values()[answer - 1];
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Пожалуйста, выберите из доступных действий.");
+                    continue;
+                }
+
+                switch (stepsAnswer) {
+                    case Steps.FIRST:
                         putProductToBasket(customer);
                         break;
-                    case 2:
+                    case Steps.SECOND:
                         System.out.println(shop);
                         break;
-                    case 3:
+                    case Steps.THIRD:
                         filterProductSearching(customer);
                         break;
-                    case 4:
+                    case Steps.FOURTH:
                         System.out.println(customer.getBasket());
                         break;
-                    case 5:
+                    case Steps.FIFTH:
                         deleteProductFromBasket(customer);
                         break;
-                    case 6:
+                    case Steps.SIXTH:
                         buyProductsFromBasket(customer);
                         break;
-                    case 7:
+                    case Steps.SEVENTH:
                         System.out.println("Баланс составляет: " + customer.getMoney());
                         break;
-                    case 8:
+                    case Steps.EIGHTH:
                         System.out.println(customer.getFridge());
                         break;
-                    case 9:
+                    case Steps.NINTH:
                         eatProductsFromFridge(customer);
                         break;
-                    case 10:
+                    case Steps.TENTH:
                         if (customer.getBasket().isEmpty()) {
                             System.out.println("До новых встреч!");
                             throw new Exception("Уходим из магазина");
