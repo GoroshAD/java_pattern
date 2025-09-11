@@ -20,12 +20,14 @@ public class Customer extends Person {
 
     public void putToBasket(Product product, int times) throws IllegalArgumentException {
         Shop shop = Shop.getInstance();
-        shop.takeFromShelf(product, times, basket);
+        shop.takeFromShelf(product, times);
+        basket.append(product, times);
     }
 
-    public void getFromBasket(Product product, int times) {
+    public void getFromBasket(Product product, int times) throws IllegalArgumentException {
         Shop shop = Shop.getInstance();
-        shop.returnToShelf(product, times, basket);
+        basket.delete(product, times);
+        shop.returnToShelf(product, times);
     }
 
     public void buyBasket() throws IllegalArgumentException {

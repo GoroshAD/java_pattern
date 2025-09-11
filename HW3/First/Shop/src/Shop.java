@@ -55,7 +55,7 @@ public class Shop {   // singleton
         return products.get(product);
     }
 
-    public void takeFromShelf(Product product, int times, Basket basket) throws IllegalArgumentException {
+    public void takeFromShelf(Product product, int times) throws IllegalArgumentException {
         int shopProductQuantity = getProductQuantity(product);
         if (times > shopProductQuantity) {
             throw new IllegalArgumentException("В магазине нет этого продукта в таком количестве.");
@@ -64,11 +64,9 @@ public class Shop {   // singleton
         } else {
             products.put(product, shopProductQuantity - times);
         }
-        basket.append(product, times);
     }
 
-    public void returnToShelf(Product product, int times, Basket basket) throws IllegalArgumentException {
-        basket.delete(product, times);
+    public void returnToShelf(Product product, int times) {
         products.put(product, getProductQuantity(product) + times);
     }
 
